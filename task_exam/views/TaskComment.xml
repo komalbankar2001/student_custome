@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_taskcomment_form" model="ir.ui.view">
+        <field name="name">task.comment.form</field>
+        <field name="model">task.comment</field>
+        <field name="arch" type="xml">
+            <form string="taskcomment">
+                <sheet>
+                    <group>
+                        <group>
+                             <field name="task"/>
+                           <field name="comment_date"/>
+                           <field name="employee"/>
+                           <field name="comment"/>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_taskcomment_list" model="ir.ui.view">
+        <field name="name">task.comment.list</field>
+        <field name="model">task.comment</field>
+        <field name="arch" type="xml">
+            <tree>
+              <field name="task"/>
+                           <field name="comment_date"/>
+                           <field name="employee"/>
+                           <field name="comment"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_taskcomment_search" model="ir.ui.view">
+        <field name="name">task.comment.search</field>
+        <field name="model">task.comment</field>
+        <field name="arch" type="xml">
+            <search string="taskcomment">
+             <field name="task"/>
+                           <field name="comment_date"/>
+                           <field name="employee"/>
+                           <field name="comment"/>
+
+            </search>
+        </field>
+    </record>
+
+            <record id="action_taskcomment" model="ir.actions.act_window">
+            <field name="name">TaskComment</field>
+            <field name="res_model">task.comment</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="search_view_id" ref="view_account_search"/>-->
+<!--            <field name="view_id" ref="view_account_list"/>-->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+              record
+              </p>
+            </field>
+        </record>
+    <menuitem id="taskcomment_root"
+              name="Task Comment"
+              parent="task_root"
+              sequence="40"/>
+
+    <menuitem id="taskcomment_task_root"
+              name="Task Comment"
+              parent="taskcomment_root"
+              sequence="40"/>
+
+    <menuitem id="taskcomment_task"
+              name="task Category"
+              parent="taskcomment_task_root"
+              action="action_taskcomment"
+              sequence="40"/>
+</odoo>

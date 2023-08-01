@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_project_form" model="ir.ui.view">
+        <field name="name">project.form</field>
+        <field name="model">project</field>
+        <field name="arch" type="xml">
+            <form string="Project">
+                <sheet>
+                    <group>
+                        <group>
+                             <field name="name"/>
+                           <field name="description"/>
+                           <field name="employeess" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_project_list" model="ir.ui.view">
+        <field name="name">project.list</field>
+        <field name="model">project</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="employeess"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_search" model="ir.ui.view">
+        <field name="name">project.search</field>
+        <field name="model">project</field>
+        <field name="arch" type="xml">
+            <search string="Project">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="employeess"/>
+
+            </search>
+        </field>
+    </record>
+
+            <record id="action_project" model="ir.actions.act_window">
+            <field name="name">Project</field>
+            <field name="res_model">project</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="search_view_id" ref="view_account_search"/>-->
+<!--            <field name="view_id" ref="view_account_list"/>-->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+               project record
+              </p>
+            </field>
+        </record>
+    <menuitem id="project_root"
+              name="Project"
+              parent="task_root"
+              sequence="20"/>
+
+    <menuitem id="project_task_root"
+              name="Project"
+              parent="project_root"
+              sequence="20"/>
+
+    <menuitem id="project_task"
+              name="Project"
+              parent="project_task_root"
+              action="action_project"
+              sequence="20"/>
+</odoo>

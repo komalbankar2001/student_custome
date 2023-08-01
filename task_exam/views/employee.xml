@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_employee_task_form" model="ir.ui.view">
+        <field name="name">employee.task.form</field>
+        <field name="model">employee.task</field>
+        <field name="arch" type="xml">
+            <form string="Employee Tasks">
+                <sheet>
+                    <group>
+                        <group>
+                             <field name="name"/>
+                           <field name="department"/>
+                        </group>
+                        <group>
+                        <field name="email"/>
+                        <field name="admission_count"/>
+                        <field name="tasks"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_employee_task_list" model="ir.ui.view">
+        <field name="name">employee.task.list</field>
+        <field name="model">employee.task</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="department"/>
+                <field name="email"/>
+                <field name="admission_count"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_employee_task_search" model="ir.ui.view">
+        <field name="name">employee.task.search</field>
+        <field name="model">employee.task</field>
+        <field name="arch" type="xml">
+            <search string="Employee Task">
+                <field name="name"/>
+                <field name="department"/>
+                <field name="email"/>
+                <field name="admission_count"/>
+
+            </search>
+        </field>
+    </record>
+
+            <record id="action_employee" model="ir.actions.act_window">
+            <field name="name">Employee</field>
+            <field name="res_model">employee.task</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="search_view_id" ref="view_account_search"/>-->
+<!--            <field name="view_id" ref="view_account_list"/>-->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                employee record
+              </p>
+            </field>
+        </record>
+    <menuitem id="task_root"
+              name="Employees"
+              sequence="10"/>
+
+    <menuitem id="task_employee_root"
+              name="Employees"
+              parent="task_root"
+              sequence="10"/>
+
+    <menuitem id="task_employee"
+              name="Employees"
+              parent="task_employee_root"
+              action="action_employee"
+              sequence="10"/>
+</odoo>

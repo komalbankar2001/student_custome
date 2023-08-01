@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_task,access_employee_task,model_employee_task,,1,1,1,1
+access_task,access_task,model_task,,1,1,1,1
+access_project,access_project,model_project,,1,1,1,1
+access_task_category,access_task_category,model_task_category,,1,1,1,1
+access_task_comment,access_task_comment,model_task_comment,,1,1,1,1
+
+

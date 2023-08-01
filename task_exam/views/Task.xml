@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_task_form" model="ir.ui.view">
+            <field name="name">task.form</field>
+            <field name="model">task</field>
+            <field name="arch" type="xml">
+                <form string="Tasks">
+                   <sheet>
+                     <group>
+                         <group>
+                            <field name="name"/>
+                             <field name="description"/>
+                         </group>
+                         <group>
+                             <field name="assigned_to"/>
+                             <field name="deadline"/>
+                             <field name="categories"/>
+                         </group>
+                     </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_task_list" model="ir.ui.view">
+            <field name="name">task.list</field>
+            <field name="model">task</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="assigned_to"/>
+                    <field name="deadline"/>
+                    <field name="categories"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_task_search" model="ir.ui.view">
+            <field name="name">task.search</field>
+            <field name="model">task</field>
+            <field name="arch" type="xml">
+                <search string="Task">
+                    <field name="name" />
+                    <field name="description"/>
+                    <field name="assigned_to"/>
+                    <field name="deadline"/>
+                    <field name="categories"/>
+                </search>
+            </field>
+        </record>
+     <record id="action_task" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">task</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="search_view_id" ref="view_account_search"/>-->
+<!--            <field name="view_id" ref="view_account_list"/>-->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                employee record
+              </p>
+            </field>
+        </record>
+    <menuitem id="task_root"
+              name="Tasks"
+              sequence="10"/>
+
+    <menuitem id="task_task_root"
+              name="Tasks"
+              parent="task_root"
+              sequence="10"/>
+
+    <menuitem id="task_task"
+              name="Tasks"
+              parent="task_task_root"
+              action="action_task"
+              sequence="10"/>
+    </data>
+</odoo>

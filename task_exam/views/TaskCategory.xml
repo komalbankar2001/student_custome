@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_taskcategory_form" model="ir.ui.view">
+        <field name="name">task.category.form</field>
+        <field name="model">task.category</field>
+        <field name="arch" type="xml">
+            <form string="taskcategory">
+                <sheet>
+                    <group>
+                        <group>
+                             <field name="name"/>
+                           <field name="projects"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_taskcategory_list" model="ir.ui.view">
+        <field name="name">task.category.list</field>
+        <field name="model">task.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="projects"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_taskcategory_search" model="ir.ui.view">
+        <field name="name">task.category.search</field>
+        <field name="model">task.category</field>
+        <field name="arch" type="xml">
+            <search string="taskcategory">
+                <field name="name"/>
+                <field name="projects"/>
+
+            </search>
+        </field>
+    </record>
+
+            <record id="action_taskcategory" model="ir.actions.act_window">
+            <field name="name">TaskCategory</field>
+            <field name="res_model">task.category</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="search_view_id" ref="view_account_search"/>-->
+<!--            <field name="view_id" ref="view_account_list"/>-->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+              record
+              </p>
+            </field>
+        </record>
+    <menuitem id="taskcategory_root"
+              name="Task Category"
+              parent="task_root"
+              sequence="30"/>
+
+    <menuitem id="taskcategory_task_root"
+              name="Task Category"
+              parent="taskcategory_root"
+              sequence="30"/>
+
+    <menuitem id="taskcategory_task"
+              name="task Category"
+              parent="taskcategory_task_root"
+              action="action_taskcategory"
+              sequence="30"/>
+</odoo>
